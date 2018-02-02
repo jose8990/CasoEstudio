@@ -1,0 +1,214 @@
+<div class="animated fadeIn">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="card">
+
+        <div class="card-header">
+          <i class="fa fa-eye"></i>
+          <span>Detalles del promovente</span>
+        </div>
+
+        <div class="card-body">
+
+          <div>
+            <strong>Datos del promovente</strong>
+          </div>
+          <hr>
+          <!-- <fieldset disabled="disabled"> -->
+          <div class="row">
+            <div class="col-md-4">
+              <app-text
+                name="primernombre"
+                [disabled]="true"
+                label="{{ 'Primer nombre' | translate }}:"
+                [(ngModel)]="pnDetalles.primernombre">
+              </app-text>
+            </div>
+
+            <div class="col-md-4">
+              <app-text
+                name="segundonombre"
+                [disabled]="true"
+                label="{{ 'Segundo nombre' | translate }}:"
+                [(ngModel)]="pnDetalles.segundonombre">
+              </app-text>
+            </div>
+
+            <div class="col-md-4">
+              <app-text
+                name="primerapellido"
+                [disabled]="true"
+                label="{{ 'Primer apellido' | translate }}:"
+                [(ngModel)]="pnDetalles.primerapellido">
+              </app-text>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-4">
+              <app-text
+                name="segundoapellido"
+                [disabled]="true"
+                label="{{ 'Segundo apellido' | translate }}:"
+                [(ngModel)]="pnDetalles.segundoapellido">
+              </app-text>
+            </div>
+
+            <div class="col-md-4">
+              <app-text
+                name="numeroidentidad"
+                [disabled]="true"
+                label="{{ 'No. Identidad' | translate }}:"
+                [(ngModel)]="pnDetalles.numeroidentidad">
+              </app-text>
+            </div>
+
+            <div class="col-md-4">
+              <app-select
+                name="idnestadocivil"
+                [disabled]="true"
+                label="{{ 'Estado civil' | translate }}:"
+                [(ngModel)]="pnDetalles.idnestadocivil">
+                <option *ngFor="let estadoC of estado_civil" value="{{ estadoC.idNomenclador }}">{{
+                  estadoC.descripcion}}
+                </option>
+              </app-select>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <app-select
+                name="idnsexo"
+                [disabled]="true"
+                label="{{ 'Sexo' | translate }}:"
+                [(ngModel)]="pnDetalles.idnsexo">
+                <option *ngFor="let genero of generos" value="{{ genero.idNomenclador }}">{{ genero.descripcion}}
+                </option>
+              </app-select>
+            </div>
+
+            <div class="col-md-4">
+              <app-text
+                name="telefono"
+                [disabled]="true"
+                label="{{ 'No. Teléfono' | translate }}:"
+                [(ngModel)]="pnDetalles.telefono">
+              </app-text>
+            </div>
+
+            <div class="col-md-4">
+              <app-text
+                name="correoelectronico"
+                [disabled]="true"
+                label="{{ 'Correo electrónico' | translate }}:"
+                [(ngModel)]="pnDetalles.correoelectronico">
+              </app-text>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <div *ngIf="!pnDetalles.cubano; else
+               pais_procedenc">
+
+                <app-select label="{{'app.domain.persona.persona-natural.provincia' | translate }}:"
+                            [disabled]="true"
+                            name="idprovincia"
+                            (change)="cargarMunicipio($event)"
+                            [(ngModel)]="pnDetalles.idprovincia">
+                  <option *ngFor="let provinc of provincias" value="{{ provinc.idNomenclador }}">{{
+                    provinc.descripcion }}
+                  </option>
+                </app-select>
+              </div>
+              <ng-template #pais_procedenc>
+                <app-select [(ngModel)]="pnDetalles.idpaisorigen" name="idpaisorigen" [disabled]="true"
+                            label="{{ 'País de procedencia' | translate }}: ">
+                  <option *ngFor="let pais of paises" value="{{pais.idNomenclador}}">
+                    {{pais.descripcion}}
+                  </option>
+                </app-select>
+              </ng-template>
+            </div>
+
+            <div class="col-md-4">
+              <div *ngIf="!pnDetalles.cubano; else
+               pais_residenc">
+
+                <app-select label="{{'app.domain.persona.persona-natural.municipio' | translate }}:"
+                            [disabled]="true"
+                            name="idmunicipio"
+                            [(ngModel)]="pnDetalles.idmunicipio">
+
+                  <option *ngFor="let municip of municipios" value="{{ municip.idNomenclador }}">{{
+                    municip.descripcion }}
+                  </option>
+                </app-select>
+              </div>
+
+              <ng-template #pais_residenc>
+                <app-select [(ngModel)]="pnDetalles.idpaisresidencia" name="idpaisresidencia" [disabled]="true"
+                            label="{{ 'País de residencia' | translate }}: ">
+                  <option *ngFor="let pais of paises" value="{{pais.idNomenclador}}">
+                    {{pais.descripcion}}
+                  </option>
+                </app-select>
+              </ng-template>
+
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <app-textarea
+                name="direccion"
+                [disabled]="true"
+                label="{{ 'Dirección' | translate }}:"
+                [(ngModel)]="pnDetalles.direccion">
+              </app-textarea>
+            </div>
+          </div>
+          <!-- </fieldset> -->
+          <!--<pre>{{ pnDetalles | json }}</pre>-->
+          <br>
+          <!--<div>-->
+          <!--<strong>Promovente(s)</strong>-->
+          <!--</div>-->
+          <!--<hr>-->
+
+
+        </div>
+
+        <div class="card-footer">
+          <!--<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> {{ 'Cerrar' |-->
+          <!--translate }}-->
+          <!--</button>-->
+          <div class="pull-right">
+            <button *ngIf="!generico" [routerLink]="['/personanatural']" type='button'
+                    class='btn btn-sm btn-primary'><span
+              class='fa fa-ban pull-right'> Cerrar</span></button>
+
+            <button *ngIf="generico" [routerLink]="['/generico/personanatural/list', pnDetalles.idpersonanatural]"
+                    type='button' class='btn btn-sm btn-primary'><span
+              class='fa fa-ban pull-right'>Cerrar</span></button>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

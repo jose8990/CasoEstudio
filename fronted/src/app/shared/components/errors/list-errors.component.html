@@ -1,0 +1,5 @@
+<ul class="error-messages" *ngIf="errorList" style="margin-right: 7%;">
+  <li class="alert alert-danger" *ngFor="let error of errorList" style="font-size: 12px;">
+    {{ error }}
+  </li>
+</ul>

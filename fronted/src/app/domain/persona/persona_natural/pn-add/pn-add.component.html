@@ -1,0 +1,373 @@
+<div class="animated fadeIn">
+
+  <!--/.row-->
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card">
+
+        <form #formAddPersonaNatural="ngForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+          <div class="card-header">
+            <i class="fa fa-plus"></i>
+            <span>Registrar promovente</span>
+          </div>
+
+          <div class="card-body">
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+                  <app-text text_letras
+                    required
+                    name="primerNombre"
+                    label="{{ 'app.domain.persona.persona-natural.primer-nombre' | translate }}: *"
+                    placeholder="{{ 'app.domain.persona.persona-natural.primer-nombre' | translate }}"
+                    [(ngModel)]="pnAdd.primernombre">
+                  </app-text>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-text text_letras
+                    name="segundoNombre"
+                    label="{{ 'app.domain.persona.persona-natural.segundo-nombre' | translate }}:"
+                    placeholder="{{ 'app.domain.persona.persona-natural.segundo-nombre' | translate }}"
+                    [(ngModel)]="pnAdd.segundonombre">
+                  </app-text>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <app-text text_letras
+                    required
+                    name="primerApellido"
+                    label="{{ 'app.domain.persona.persona-natural.primer-apellido' | translate }}: *"
+                    placeholder="{{ 'app.domain.persona.persona-natural.primer-apellido' | translate }}"
+                    [(ngModel)]="pnAdd.primerapellido">
+                  </app-text>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="row separated-row">
+
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-text text_letras
+
+                    name="segundoApellido"
+                    label="{{ 'app.domain.persona.persona-natural.segundo-apellido' | translate }}: "
+                    placeholder="{{ 'app.domain.persona.persona-natural.segundo-apellido' | translate }}"
+                    [(ngModel)]="pnAdd.segundoapellido">
+                  </app-text>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+
+                  <app-text
+                    name="ci" ci_validator limit="11"
+                    label="{{ 'No. Identidad' | translate }}: "
+                    placeholder="{{ 'No. Identidad' | translate }}"
+                    [(ngModel)]="pnAdd.numeroidentidad">
+                  </app-text>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-select label="{{ 'app.domain.persona.persona-natural.estado-civil' | translate}}:"
+                              name="idnestadocivil"
+                              [(ngModel)]="pnAdd.idnestadocivil">
+                    <option *ngFor="let estado_civil of estadosciviles" value="{{ estado_civil.idNomenclador }}">{{
+                      estado_civil.descripcion }}
+                    </option>
+                  </app-select>
+                </div>
+
+              </div>
+              <!--<div class="col-md-4">-->
+                <!--<div class="col-md-10">-->
+                  <!--<app-text-->
+                    <!--name="aliass"-->
+                    <!--label="{{'app.domain.persona.persona-natural.alias' | translate }}"-->
+                    <!--placeholder="{{'app.domain.persona.persona-natural.alias' | translate }}"-->
+                    <!--[(ngModel)]="pnAdd.alias">-->
+                  <!--</app-text>-->
+                <!--</div>-->
+
+              <!--</div>-->
+
+            </div>
+
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-select label="{{ 'app.domain.persona.persona-natural.genero' | translate }}: "
+                              name="idnsexo"
+                              [(ngModel)]="pnAdd.idnsexo">
+                    <option *ngFor="let genero of generos" value="{{ genero.idNomenclador }}">{{ genero.descripcion }}
+                    </option>
+                  </app-select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-select label="{{ 'Raza' | translate }}: "
+                              name="idnraza"
+                              [(ngModel)]="pnAdd.idnraza">
+                    <option *ngFor="let raza of razas" value="{{ raza.idNomenclador }}">{{ raza.descripcion }}</option>
+                  </app-select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <app-text
+                    name="correoelectronico"
+                    label="{{'security.login.email' | translate }}:"
+                    placeholder="{{'security.login.email' | translate }}"
+                    [(ngModel)]="pnAdd.correoelectronico">
+                  </app-text>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-text number limit="15"
+                    name="telefono"
+                            label="{{'No. Teléfono' | translate }}:"
+                            placeholder="{{'No. Teléfono' | translate }}"
+                    [(ngModel)]="pnAdd.telefono">
+                  </app-text>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-2">
+                  <label >{{'Activo' | translate}}:</label>
+                  <br>
+                  <input [disabled]="true" class="form-control checkbox" name="activo" type="checkbox"
+                         [(ngModel)]="pnAdd.activo"/>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="row separated-row">
+
+              <div class="col-md-2">
+                <div class="col-md-5">
+                  <label>{{'app.domain.persona.persona-natural.extranjero' | translate}}:</label>
+                  <!--<div id="extranjero" class="checkbox">-->
+                  <input class="form-control checkbox" name="cubano" type="checkbox"
+                         [(ngModel)]="pnAdd.cubano"/>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+
+                  <div *ngIf="!pnAdd.cubano; else
+                    pais_procedencia">
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'app.domain.persona.persona-natural.pais-procede' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="pais_procede"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+
+                    <!--</div>-->
+
+                    <app-select label="{{'app.domain.persona.persona-natural.provincia' | translate }}:"
+                                name="idprovincia"
+                                (change)="cargarMunicipio($event)"
+                                [(ngModel)]="pnAdd.idprovincia">
+
+
+                      <option *ngFor="let provinc of provincias" value="{{ provinc.idNomenclador }}">{{
+                        provinc.descripcion }}
+                      </option>
+                    </app-select>
+
+                  </div>
+
+                  <ng-template #pais_procedencia>
+                    <app-select [(ngModel)]="pnAdd.idpaisorigen" name="idpaisorigen"
+                                label="{{ 'app.domain.persona.persona-natural.pais-procede' | translate }}: ">
+                      <option *ngFor="let pais of paises" value="{{pais.idNomenclador}}">
+                        {{pais.descripcion}}
+                      </option>
+                    </app-select>
+                  </ng-template>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <div *ngIf="!pnAdd.cubano; else
+                    pais_residencia">
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'app.domain.persona.persona-natural.pais-reside' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="pais_reside"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+
+                    <!--</div>-->
+
+                    <app-select label="{{'app.domain.persona.persona-natural.municipio' | translate }}: "
+                                name="idmunicipio"
+                                [(ngModel)]="pnAdd.idmunicipio">
+
+                      <option *ngFor="let municip of municipios" value="{{ municip.idNomenclador }}">{{
+                        municip.descripcion }}
+                      </option>
+                    </app-select>
+                  </div>
+                  <ng-template #pais_residencia>
+                    <app-select  [(ngModel)]="pnAdd.idpaisresidencia" name="idpaisresidencia"
+                                label="{{ 'app.domain.persona.persona-natural.pais-reside' | translate }}: ">
+                      <option *ngFor="let pais of paises" value="{{pais.idNomenclador}}">
+                        {{pais.descripcion}}
+                      </option>
+                    </app-select>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+
+            <!--<br>-->
+            <!--<br>-->
+            <!--<br>-->
+
+
+            <div class="row">
+
+              <!--<div class="col-md-4">-->
+                <!--<div class="col-md-10">-->
+                  <!--<div *ngIf="!pnAdd.cubano; else-->
+                  <!--provincia_habilit">-->
+                    <!--<app-select label="{{'app.domain.persona.persona-natural.provincia' | translate }}: "-->
+                                <!--name="idprovincia"-->
+                                <!--(change)="cargarMunicipio($event)"-->
+                                <!--[(ngModel)]="pnAdd.idprovincia">-->
+
+
+                      <!--<option *ngFor="let provinc of provincias" value="{{ provinc.idNomenclador }}">{{-->
+                        <!--provinc.descripcion }}-->
+                      <!--</option>-->
+                    <!--</app-select>-->
+                  <!--</div>-->
+
+                  <!--<ng-template #provincia_habilit>-->
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'Provincia' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="provincia_habilit"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                  <!--</ng-template>-->
+
+                <!--</div>-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-4">-->
+
+                <!--<div class="col-md-10">-->
+                  <!--<div *ngIf="!pnAdd.cubano; else-->
+                  <!--municipio_habilit">-->
+                    <!--<app-select label="{{'app.domain.persona.persona-natural.municipio' | translate }}: "-->
+                                <!--name="idmunicipio"-->
+                                <!--[(ngModel)]="pnAdd.idmunicipio">-->
+
+                      <!--<option *ngFor="let municip of municipios" value="{{ municip.idNomenclador }}">{{-->
+                        <!--municip.descripcion }}-->
+                      <!--</option>-->
+                    <!--</app-select>-->
+                  <!--</div>-->
+                  <!--<ng-template #municipio_habilit>-->
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'Municipio' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="municipio_habilit"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                  <!--</ng-template>-->
+
+                <!--</div>-->
+
+              <!--</div>-->
+
+              <div class="col-md-12">
+                <div class="col-md-12">
+                  <app-textarea
+                    name="direccion"
+                    label="{{'app.domain.persona.persona-natural.direccion'| translate}}: "
+                    [(ngModel)]="pnAdd.direccion"></app-textarea>
+                </div>
+
+              </div>
+
+              <!--<div class="col-md-1"></div>-->
+            </div>
+          </div>
+
+          <!--<pre>{{pnAdd|json}}</pre>-->
+          <div class="card-footer">
+            <div id="botones" class="pull-right">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="!formAddPersonaNatural.valid"><i
+                class="fa fa-dot-circle-o"></i> {{ 'Guardar' | translate }}
+              </button>
+              <button *ngIf="!generico" type="reset" class="btn btn-sm btn-primary" [routerLink]="['/personanatural']"><i class="fa fa-ban"></i> {{ 'Cerrar' |
+                translate }}
+              </button>
+
+              <button *ngIf="generico" type="reset" class="btn btn-sm btn-primary" [routerLink]="['/generico/personanatural']"><i class="fa fa-ban"></i> {{ 'Cerrar' |
+                translate }}
+              </button>
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

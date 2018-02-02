@@ -1,0 +1,124 @@
+.header-sigap {
+  border-bottom: 1px solid #a50f05;
+}
+
+.user-profile {
+  background: #d6d6d6;
+  padding: 10px 14px 9px;
+  float: right;
+  padding-right: 90px;
+  z-index: 0;
+}
+
+.img-logo-header {
+  margin: 8px -2px 8px 1em;
+}
+
+.li-grafica-header {
+  width: 909px;
+}
+
+.img-grafica-header {
+  height: 65px;
+  float: left;
+  width: 329px;
+}
+
+.grafica {
+  height: 65px;
+  float: left;
+  background-image: url("../../../../assets/sgquo/img/grafica.jpg");
+  width: 329px;
+  background-repeat: repeat-x;
+  background-position-y: 1px;
+}
+
+.logo_grafica {
+  height: auto;
+  float: left;
+  display: inline;
+}
+
+.logo {
+  height: 62px;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(32%, #ffffff), color-stop(100%, #dedede));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede', GradientType=0);
+  float: left;
+}
+
+.usuario {
+  background: #d6d6d6;
+  height: 59px;
+  float: right;
+  padding: 0 12px 0 0;
+}
+
+.other-opt {
+  background: none repeat scroll 0 0 white;
+  float: left;
+  height: 59px;
+  padding: 0 12px 0 0;
+}
+
+#help-opt, #user-opt {
+  margin-top: 12px;
+}
+
+.content_avatar {
+  padding: 3px;
+  height: 52px;
+  width: 52px;
+  background: #FFFFFF;
+  margin: 4px 6px;
+  border-radius: 4px;
+  float: left;
+}
+
+.avatar2 {
+  height: 46px;
+  width: 46px;
+  overflow: hidden;
+}
+
+.user-opt {
+  display: inline-block;
+}
+
+#help-opt, #user-opt {
+  margin-top: 12px;
+}
+
+.avatar-default {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+}
+@media (max-width: 1066px) {
+  .usuario {
+    top: 0px;
+    right: 0px;
+    position: fixed;
+    z-index: 1000;
+  }
+  .grafica {
+    width: 316px;
+  }
+}
+@media (max-width: 640px) {
+  .grafica {
+    width: 127px;
+  }
+}
+@media (max-width: 450px) {
+  .grafica {
+    display: none;
+  }
+}
+

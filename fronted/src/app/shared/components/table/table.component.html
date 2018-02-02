@@ -1,0 +1,200 @@
+<div class="ng2-ya-table_wrapper form-horizontal dt-bootstrap no-footer">
+
+  <!--
+  <div class="row">
+
+    <div class="col-md-8">
+
+      <div class="ng2-ya-table_length">
+        <label>
+              <span *ngFor="let s of state.language.lengthMenu.split(' ')">
+                <span [ngSwitch]="s">
+                  <select *ngSwitchCase="'_MENU_'" class="form-control input-sm" [(ngModel)]="state.paging.itemsPerPage"
+                          (change)="state.changePaging(1, $event.target.value)">
+                    <option *ngFor="let pn of paging.itemsPerPageOptions" [value]="pn">{{pn}}</option>
+                  </select>
+                  <span *ngSwitchDefault>{{s}}</span>
+                </span>
+              </span>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+      <div class="ng2-ya-table_filter pull-rigth">
+        <label>
+          <span>{{state.language.search}}</span>
+          <input type="search" class="form-control input-sm" [(ngModel)]="state.fullTextFilter"
+                 (ngModelChange)="onFullTextFilterValueChange($event)"/>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <br>-->
+
+  <div *ngIf="processing" class="ng2-ya-table_processing panel panel-default">{{state.language.processing}}</div>
+
+  <table class="table dataTable table-striped table-bordered" ngClass="{{options.className || ''}}" role="grid"
+         style="width: 100%;">
+    <thead>
+
+    <tr role="row">
+
+      <th class="encoger" *ngIf="options.description"></th>
+
+      <th *ngIf="options.checked === true && state.columns.length" class="checkboxes">
+        <div class="checkbox">
+          <label>
+            <input (click)="checkAllClick()" type="checkbox" [(ngModel)]="selectedAll">
+            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+          </label>
+        </div>
+      </th>
+
+      <th class="encoger" *ngFor="let column of state.columns" [style.width]="column.def.width"
+          [ngClass]="{'sorting_desc': column.sortOrder === 'desc', 'sorting_asc': column.sortOrder === 'asc', 'sorting': column.hasSort }"
+          [ngTableSorting]="column">
+        {{ column.def.title }}
+        <i *ngIf="column.hasSort" class="pull-right fa"
+           [ngClass]="{'fa-sort-desc': column.sortOrder === 'desc', 'fa-sort-asc': column.sortOrder === 'asc', 'fa-sort': !column.sortOrder }"
+           style="margin-top: 5px;"></i>
+      </th>
+
+    </tr>
+
+    </thead>
+    <tbody>
+
+    <tr *ngIf="state.showFilterRow">
+
+      <td class="encoger" *ngIf="options.description"></td>
+
+      <td *ngIf="options.checked === true"></td>
+
+      <td class="encoger" *ngFor="let column of state.columns">
+        <div *ngIf="column.def.filter" [ngSwitch]="column.def.filter.controlType">
+          <app-table-filter-list *ngSwitchCase="'list'" [column]="column"></app-table-filter-list>
+          <app-table-filter-default *ngSwitchDefault [column]="column"></app-table-filter-default>
+        </div>
+      </td>
+
+    </tr>
+
+    <ng-container *ngFor="let item of rows; let i = index">
+      <tr>
+
+        <td class="encoger" *ngIf="options.description || options.renderDescription" class="arrows">
+          <span class="fa fa-chevron-right" (click)="showColumn(item, true)"
+                [hide]="this['showColumnRow' + item[identifierResourceServer]]"></span>
+          <span class="fa fa-chevron-down" (click)="showColumn(item, false)"
+                [hide]="!this['showColumnRow' + item[identifierResourceServer]]"></span>
+          <input type="hidden" [(ngModel)]="this['showColumnRow' + item[identifierResourceServer]]"/>
+        </td>
+
+        <td *ngIf="options.checked === true" class="checkboxes">
+
+          <div class="checkbox">
+            <label>
+              <input (click)="checkClick(item)" type="checkbox" value="{{ item[identifierResourceServer] }}"
+                     [(ngModel)]="this['checkRowId_' + item[identifierResourceServer]]"/>
+              <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+            </label>
+          </div>
+
+        </td>
+
+        <td class="encoger" *ngFor="let column of columns" (click)="cellClick(item, column)">
+
+          <ng-template *ngIf="column.customTemplate;else innerHtml" [ngTemplateOutlet]="templateRef" [ngTemplateOutletContext]="{ $implicit: { column: column, row: item  } }"></ng-template>
+
+          <ng-template #innerHtml><div [innerHtml]="sanitize(getHtml(item, column))"></div></ng-template>
+
+          <app-dynamic-wrapper *ngIf="column.renderComponent && !column.customTemplate"
+                               [componentData]="getComponentData(item, column)"></app-dynamic-wrapper>
+
+        </td>
+
+      </tr>
+
+      <tr *ngIf="options.description || options.renderDescription"
+          [hide]="!this['showColumnRow' + item[identifierResourceServer]]">
+        <td class="encoger" [attr.colspan]="state.columns.length + 2">
+
+          <ng-container *ngFor="let entry of item | keys">
+
+            <ng-container *ngFor="let optionDesc of options.description">
+
+              <div *ngIf="entry.key === optionDesc" style="padding: 5px; color: gray">
+                {{ entry.value }}
+              </div>
+
+              <div *ngIf="optionDesc.title && optionDesc.name && entry.key === optionDesc.name"
+                   style="padding: 5px; color: gray">
+                <b>{{ optionDesc.title }}: </b> {{ entry.value }}
+              </div>
+
+            </ng-container>
+
+          </ng-container>
+
+          <app-dynamic-wrapper *ngIf="options.renderDescription"
+                               [componentData]="getComponentDataDescription(item)"></app-dynamic-wrapper>
+
+        </td>
+      </tr>
+
+    </ng-container>
+
+    <tr *ngIf="rows.length === 0">
+      <td class="encoger" [attr.colspan]="state.columns.length + 2">{{ state.language.emptyResult }}</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <div *ngIf="rows.length > 0" class="ng2-ya-table_info" role="status">
+          <span *ngFor="let s of state.language.info.split(' ')">
+            <span [ngSwitch]="s">
+              <span *ngSwitchCase="'_START_'">{{(state.paging.currentPage - 1) * state.paging.itemsPerPage + 1}}</span>
+              <span
+                *ngSwitchCase="'_END_'">{{(state.paging.currentPage - 1) * state.paging.itemsPerPage + rows.length}}</span>
+              <span *ngSwitchCase="'_TOTAL_'">{{state.paging.recordsFiltered}}</span>
+              <span *ngSwitchDefault>{{s}}</span>
+            </span>
+          </span>
+      </div>
+
+    </div>
+
+    <div class="col-md-8">
+      <div class="row pull-right" style="margin-right: 0">
+        <div class="ng2-ya-table_paginate paging_simple_numbers">
+
+          <pagination *ngIf="rows.length > 0"
+                      [(ngModel)]="state.paging.currentPage"
+                      [totalItems]="state.paging.recordsFiltered"
+                      [itemsPerPage]="state.paging.itemsPerPage"
+                      [maxSize]="paging.maxSize"
+                      [boundaryLinks]="true"
+                      [rotate]="false"
+                      (pageChanged)="state.changePaging($event.page, $event.itemsPerPage)"
+                      [firstText]="state.language.pagination.first"
+                      [lastText]="state.language.pagination.last"
+                      [nextText]="state.language.pagination.next"
+                      [previousText]="state.language.pagination.previous">
+          </pagination>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

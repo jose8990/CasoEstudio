@@ -1,0 +1,111 @@
+<div class="form-group">
+
+  <label *ngIf="label"
+         [attr.for]="identifier"
+         class="form-control-label">
+    {{ label }}
+  </label>
+
+  <div class="input-group ngx-datepicker-container">
+
+    <input type="text"
+           [disabled]="disabled"
+           readonly
+           [placeholder]="placeholder"
+           [(ngModel)]="displayValue"
+           [ngClass]="{invalid: (invalid | async)}"
+           [id]="identifier"
+           [class.is-invalid]="init === false && (invalid | async)"
+           [class.is-valid]="(isvalid | async) && disabled === false"
+           (click)="toggle()"
+           (blur)="check()"
+           class="form-control form-control-sm app-datepicker ngx-datepicker-input"
+    />
+
+    <div class="ngx-datepicker-calendar-container" *ngIf="isOpened">
+      <div class="topbar-container">
+        <svg width="7px" height="10px" viewBox="0 0 7 10" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             (click)="prevMonth()">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-923.000000, -1882.000000)" fill="#CED0DA">
+              <g transform="translate(80.000000, 1361.000000)">
+                <g transform="translate(0.000000, 430.000000)">
+                  <g transform="translate(825.000000, 0.000000)">
+                    <g transform="translate(0.000000, 72.000000)">
+                      <g transform="translate(18.000000, 15.000000)">
+                        <polygon id="Back" points="6.015 4 0 9.013 6.015 14.025"></polygon>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <span class="topbar-title" (click)="toggleView()">{{ barTitle }}</span>
+        <svg width="7px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             (click)="nextMonth()">
+          <g id="Source-Sans---UI-Elements-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="White-Layout" transform="translate(-1182.000000, -1882.000000)" fill="#CED0DA">
+              <g id="Dropdowns-&amp;-Selector" transform="translate(80.000000, 1361.000000)">
+                <g id="Dropdowns" transform="translate(0.000000, 430.000000)">
+                  <g id="Calendar" transform="translate(825.000000, 0.000000)">
+                    <g transform="translate(0.000000, 72.000000)" id="Top-Bar-Nav">
+                      <g transform="translate(18.000000, 15.000000)">
+                        <polygon id="Forward"
+                                 transform="translate(262.007500, 9.012500) scale(-1, 1) translate(-262.007500, -9.012500) "
+                                 points="265.015 4 259 9.013 265.015 14.025"></polygon>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="main-calendar-container" *ngIf="view === 'days'">
+        <div class="main-calendar-day-names">
+          <span class="day-name-unit" *ngFor="let name of dayNames">{{ name }}</span>
+        </div>
+        <div class="main-calendar-days">
+          <button class="day-unit button-none" *ngFor="let day of days; let i = index;"
+                  [ngClass]="{ 'is-prev-month': !day.inThisMonth, 'is-today': day.isToday, 'is-selected': day.isSelected, 'is-active' : !day.isActive}"
+                  (click)="setDate(i)">{{ day.day }}
+          </button>
+        </div>
+      </div>
+
+      <div class="main-calendar-container" *ngIf="view === 'years'">
+        <div class="main-calendar-years" slimScroll [options]="scrollOptions">
+          <span class="year-unit" *ngFor="let year of years; let i = index;"
+                [ngClass]="{ 'is-selected': year.isThisYear }" (click)="setYear(i)">{{ year.year }}</span>
+        </div>
+
+      </div>
+
+      <div class="footer-container">
+        <button type="button" class="btn btn-outline-info today" *ngIf="today" (click)="selectToday()"
+                [ngClass]="{'disabled-button':!todayEnable}"><i class="fa fa-calendar-check-o"></i>{{
+          'component.datepicker.todaybutton' | translate }}
+        </button>
+        <button type="button" class="btn btn-outline-info clear" *ngIf="clear" (click)="clearDate()"><i
+          class="fa fa-1x fa-calendar-times-o"></i>{{ 'component.datepicker.clearbutton' | translate }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <small *ngIf="help" [id]="identifier + 'HelpBlock'" class="form-text text-muted">
+    {{ help }}
+  </small>
+
+  <app-validation-messages
+    *ngIf="init === false && (invalid | async)"
+    [messages]="failures | async">
+  </app-validation-messages>
+
+</div>
+

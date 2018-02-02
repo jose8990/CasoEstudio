@@ -1,0 +1,21 @@
+.text-muted {
+  color: #536c79 !important;
+  float: left;
+  padding-left: 9px;
+}
+
+.btn-secondary {
+  background-color: #f0f3f5 !important;
+}
+
+.selected-item-item {
+  margin: 4px;
+  background-color: #d6d6d691;
+  border-radius: 4px;
+  color: #000000ab;
+  padding-right: 28px !important;
+}
+
+.close {
+  padding-top: 0px !important;
+}

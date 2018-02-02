@@ -1,0 +1,199 @@
+.checkbox label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: .25em;
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.checkbox .cr:hover {
+  border: 2px solid #a9a9a9;
+  opacity: 0.5;
+}
+
+.checkbox .cr .cr-icon {
+  position: absolute;
+  font-size: 1em;
+  line-height: 0;
+  top: 50%;
+  left: 8%;
+}
+
+.checkbox .cr .cr-icon {
+  position: absolute;
+  font-size: 1em;
+  line-height: 0;
+  top: 50%;
+  left: 8%;
+}
+
+.checkbox label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon {
+  opacity: 0;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+  opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr {
+  opacity: .5;
+}
+
+.checkboxes {
+  text-align: center;
+  width: 50px;
+}
+
+.arrows {
+  text-align: center;
+  width: 50px;;
+  cursor: pointer;
+}
+
+.arrows span {
+  margin-top: 8px;
+}
+
+.table th.checkboxes, .table td.checkboxes {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 0px;
+}
+
+table.ng2-ya-table {
+  clear: both;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+  border-collapse: separate !important;
+}
+
+table.ng2-ya-table td, table.ng2-ya-table th {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+table.ng2-ya-table td.ng2-ya-table_empty, table.ng2-ya-table th.ng2-ya-table_empty {
+  text-align: center;
+}
+
+table.ng2-ya-table.nowrap th, table.ng2-ya-table.nowrap td {
+  white-space: nowrap;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_length label {
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_length select {
+  width: 75px;
+  display: inline-block;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_filter {
+  text-align: right;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_filter label {
+  font-weight: normal;
+  white-space: nowrap;
+  text-align: left;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_info {
+  padding-top: 8px;
+  white-space: nowrap;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_paginate {
+  margin: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_paginate ul.pagination {
+  margin: 2px 0;
+  white-space: nowrap;
+}
+
+div.ng2-ya-table_wrapper div.ng2-ya-table_processing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  margin-top: -26px;
+  text-align: center;
+  padding: 1em 0;
+}
+
+table.ng2-ya-table thead > tr > th.sorting_asc, table.ng2-ya-table thead > tr > th.sorting_desc, table.ng2-ya-table thead > tr > th.sorting, table.ng2-ya-table thead > tr > td.sorting_asc, table.ng2-ya-table thead > tr > td.sorting_desc, table.ng2-ya-table thead > tr > td.sorting {
+  padding-right: 30px;
+}
+
+table.ng2-ya-table thead > tr > th:active, table.ng2-ya-table thead > tr > td:active {
+  outline: none;
+}
+
+table.ng2-ya-table thead .sorting, table.ng2-ya-table thead .sorting_asc, table.ng2-ya-table thead .sorting_desc, table.ng2-ya-table thead .sorting_asc_disabled, table.ng2-ya-table thead .sorting_desc_disabled {
+  cursor: pointer;
+  position: relative;
+}
+
+table.ng2-ya-table thead .sorting:after, table.ng2-ya-table thead .sorting_asc:after, table.ng2-ya-table thead .sorting_desc:after, table.ng2-ya-table thead .sorting_asc_disabled:after, table.ng2-ya-table thead .sorting_desc_disabled:after {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: block;
+  font-family: 'Glyphicons Halflings';
+  opacity: 0.5;
+}
+
+table.ng2-ya-table thead .sorting:after {
+  opacity: 0.2;
+  content: "e150"; /* sort */
+}
+
+table.ng2-ya-table thead .sorting_asc:after {
+  content: "e155"; /* sort-by-attributes */
+}
+
+table.ng2-ya-table thead .sorting_desc:after {
+  content: "e156"; /* sort-by-attributes-alt */
+}
+
+table.ng2-ya-table thead .sorting_asc_disabled:after, table.ng2-ya-table thead .sorting_desc_disabled:after {
+  color: #eee;
+}
+
+@media screen and (max-width: 767px) {
+  div.ng2-ya-table_wrapper div.ng2-ya-table_length, div.ng2-ya-table_wrapper div.ng2-ya-table_filter, div.ng2-ya-table_wrapper div.ng2-ya-table_info, div.ng2-ya-table_wrapper div.ng2-ya-table_paginate {
+    text-align: center;
+  }
+}
+
+
+.encoger{
+  padding: 4px !important;
+}

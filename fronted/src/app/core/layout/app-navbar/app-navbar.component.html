@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-light app-navbar main-navbar">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" appMobileSidebarToggler>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto" id="main-nav">
+
+      <li class="nav-item" routerLinkActive="active" *ngxPermissionsOnly="['ROLE_EXPEDIENTE']">
+        <a class="nav-link" [routerLink]="['/expediente']">
+          {{ 'app.domain.expediente.menu.title' | translate }} </a>
+      </li>
+      <li class="divider-vertical" *ngxPermissionsOnly="['ROLE_EXPEDIENTE']"></li>
+
+      <li class="nav-item" routerLinkActive="active" *ngxPermissionsOnly="['ROLE_PROMOVENTE']">
+        <a class="nav-link" [routerLink]="['/personanatural']">
+          {{ 'app.domain.persona.persona-natural.menu.title' | translate }} </a>
+      </li>
+      <li class="divider-vertical" *ngxPermissionsOnly="['ROLE_PROMOVENTE']"></li>
+
+      <li class="nav-item" routerLinkActive="active" *ngxPermissionsOnly="['ROLE_ESCRITO']">
+        <a class="nav-link" [routerLink]="['/escrito']">
+          {{ 'app.domain.escrito.menu.title' | translate }} </a>
+      </li>
+      <li class="divider-vertical" *ngxPermissionsOnly="['ROLE_ESCRITO']"></li>
+
+
+      <li class="nav-item" routerLinkActive="active" *ngxPermissionsOnly="['ROLE_ASUNTO']">
+        <a class="nav-link" [routerLink]="['/asuntos']">
+          {{ 'app.domain.asunto.menu.title' | translate }} </a>
+      </li>
+      <li class="divider-vertical" *ngxPermissionsOnly="['ROLE_ASUNTO']"></li>
+
+
+      <li class="nav-item" routerLinkActive="active" *ngxPermissionsOnly="['ROLE_REPORTE']">
+        <a class="nav-link" [routerLink]="['/reportes']">
+          {{ 'app.domain.reporte.menu.title' | translate }} </a>
+      </li>
+
+    </ul>
+
+    <style>
+      .divider-vertical {
+        border-left: 0 none;
+        border-right: 1px solid #D3D3D3 !important;
+        height: 30px !important;
+        margin-top: 2px;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+      }
+
+      #main-nav {
+        padding: 0;
+        margin-top: 1px;
+      }
+
+      #main-nav li {
+        margin-right: 1px;
+        margin-left: 1px;
+
+      }
+
+      #main-nav li a {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        margin-right: 4px;
+        margin-left: 4px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        padding-right: 12px;
+        padding-left: 12px;
+        line-height: 14px;
+        /*display: block;*/
+      }
+    </style>
+    <!--<form class="form-inline">-->
+
+    <!--<div class="input-group">-->
+
+    <!--<input id="input1-group2" class="form-control form-control-sm" name="input1-group2" placeholder="Search" type="text" style="height: 30px;">-->
+
+    <!--<span class="input-group-btn">-->
+    <!--<button class="btn btn-danger" type="button" style="height: 30px;">-->
+    <!--<i class="fa fa-search"></i>-->
+    <!--</button>-->
+    <!--</span>-->
+
+    <!--</div>-->
+
+    <!--</form>-->
+
+  </div>
+</nav>

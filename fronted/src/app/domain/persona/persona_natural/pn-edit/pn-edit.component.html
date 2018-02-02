@@ -1,0 +1,405 @@
+<div class="animated fadeIn">
+
+  <!--/.row-->
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card">
+
+        <form #formEditPersonaNatural="ngForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+          <div class="card-header">
+            <i class="fa fa-edit"></i>
+            <span>Modificar promovente</span>
+          </div>
+
+          <div class="card-body">
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <app-text text_letras
+                    required
+                    name="primerNombre"
+                    label="{{ 'app.domain.persona.persona-natural.primer-nombre' | translate }}: *"
+                    placeholder="{{ 'app.domain.persona.persona-natural.primer-nombre' | translate }}"
+                    [(ngModel)]="pnEdit.primernombre">
+                  </app-text>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-text text_letras
+                    name="segundoNombre"
+                    label="{{ 'app.domain.persona.persona-natural.segundo-nombre' | translate }}:"
+                    placeholder="{{ 'app.domain.persona.persona-natural.segundo-nombre' | translate }}"
+                    [(ngModel)]="pnEdit.segundonombre">
+                  </app-text>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <app-text text_letras
+                    required
+                    name="primerApellido"
+                    label="{{ 'app.domain.persona.persona-natural.primer-apellido' | translate }}: *"
+                    placeholder="{{ 'app.domain.persona.persona-natural.primer-apellido' | translate }}"
+                    [(ngModel)]="pnEdit.primerapellido">
+                  </app-text>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-text text_letras
+                    name="segundoApellido"
+                    label="{{ 'app.domain.persona.persona-natural.segundo-apellido' | translate }}:"
+                    placeholder="{{ 'app.domain.persona.persona-natural.segundo-apellido' | translate }}"
+                    [(ngModel)]="pnEdit.segundoapellido">
+                  </app-text>
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+
+                  <app-text ci_validator limit="11"
+                            name="ci"
+                            label="{{ 'No. Identidad' | translate }}:"
+                            placeholder="{{ 'No. Identidad' | translate }}"
+                            [(ngModel)]="pnEdit.numeroidentidad">
+                  </app-text>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-select label="{{ 'app.domain.persona.persona-natural.estado-civil' | translate}}:"
+                              name="idnestadocivil"
+                              [(ngModel)]="pnEdit.idnestadocivil">
+                    <option *ngFor="let estado_civil of estadosciviles" value="{{ estado_civil.idNomenclador }}">{{
+                      estado_civil.descripcion }}
+                    </option>
+                  </app-select>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-select label="{{ 'app.domain.persona.persona-natural.genero' | translate }}:"
+                              name="idnsexo"
+                              [(ngModel)]="pnEdit.idnsexo">
+                    <option *ngFor="let gener of generos" value="{{ gener.idNomenclador }}">{{ gener.descripcion }}
+                    </option>
+                  </app-select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-select label="{{ 'Raza' | translate }}:"
+                              name="idnraza"
+                              [(ngModel)]="pnEdit.idnraza">
+                    <option *ngFor="let raza of razas" value="{{ raza.idNomenclador }}">{{ raza.descripcion }}</option>
+                  </app-select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <app-text
+                    name="correoelectronico"
+                    label="{{'security.login.email' | translate }}:"
+                    placeholder="{{'security.login.email' | translate }}"
+                    [(ngModel)]="pnEdit.correoelectronico">
+                  </app-text>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row separated-row">
+
+              <div class="col-md-4">
+
+                <div class="col-md-10">
+                  <app-text number limit="15"
+                            name="telefono"
+                            label="{{'No. Teléfono' | translate }}:"
+                            placeholder="{{'No. Teléfono' | translate }}"
+                            [(ngModel)]="pnEdit.telefono">
+
+                  </app-text>
+
+                </div>
+
+              </div>
+              <div class="col-md-4">
+                <div class="col-md-2">
+                  <label>{{'Activo' | translate}}:</label>
+                  <br>
+                  <!--<input class="form-control checkbox" name="activo" type="checkbox" [value]="true" (click)="modalService.open('activar_desactivar')"-->
+                  <!--<input class="form-control checkbox" name="activo" type="checkbox" [value]="true" (click)="activar_desactivar_Promovente($event)"-->
+                  <input class="form-control checkbox" name="activo" type="checkbox" checked (click)="(pnEdit.activo)? modalService.open('activar_desactivar') : return; "
+                         [(ngModel)]="pnEdit.activo" />
+                  <!--(change)="activoToString()"/>-->
+                </div>
+              </div>
+
+              <app-modal [blocking]="false" [modalId]=" 'activar_desactivar'" >
+
+                <div class="modal-header">
+                  <h4 class="modal-title">Desactivar</h4>
+                  <!--<button type="button" class="close" (click)="modalService.close('activar_desactivar', true)" aria-label="Close">-->
+                    <!--<span aria-hidden="true">&times;</span>-->
+                  <!--</button>-->
+                </div>
+
+                <div class="modal-body">
+                  <div>¿Está seguro que desea desactivar el promovente?</div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="activar_desactivar_Promovente(true,$event)">{{ 'app.base.btn.cancel' | translate }}</button>
+                  <!--<button type="button" class="btn btn-secondary" (click)="modalService.open('activar_desactivar_Promovente', activar_desactivar_Promovente)">{{ 'app.base.btn.cancel' | translate }}</button>-->
+                  <button type="button" class="btn btn-primary" (click)="activar_desactivar_Promovente(false,$event)">{{ 'app.base.btn.ok' | translate }}</button>
+                </div>
+
+              </app-modal>
+
+
+            </div>
+
+            <br>
+            <div class="row separated-row">
+
+              <div class="col-md-2">
+                <div class="col-md-5">
+                  <label>{{'app.domain.persona.persona-natural.extranjero' | translate}}:</label>
+                  <!--<div id="extranjero" class="checkbox">-->
+                  <input class="form-control checkbox" name="cubano" type="checkbox"
+                         [(ngModel)]="pnEdit.cubano"/>
+                  <!--(change)="cubanoToString()"/>-->
+
+                </div>
+              </div>
+
+              <!--<pre> {{pnAdd | json }}</pre>-->
+            </div>
+            <br>
+            <div class="row separated-row">
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <div *ngIf="!pnEdit.cubano; else
+                    pais_procedencia">
+                    <div class="form-group">
+                      <!--<label> {{ 'app.domain.persona.persona-natural.pais-procede' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="pais_procede"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+                      <app-select label="{{'app.domain.persona.persona-natural.provincia' | translate }}: "
+                                  name="idprovincia"
+                                  (change)="cargarMunicipio($event)"
+                                  [(ngModel)]="pnEdit.idprovincia">
+
+
+                        <option *ngFor="let provinc of provincias" value="{{ provinc.idNomenclador }}">{{
+                          provinc.descripcion }}
+                        </option>
+                      </app-select>
+
+                    </div>
+                  </div>
+
+                  <ng-template #pais_procedencia>
+                    <app-select [(ngModel)]="pnEdit.idpaisorigen" name="idpaisorigen"
+                                label="{{ 'app.domain.persona.persona-natural.pais-procede' | translate }}: ">
+                      <option *ngFor="let pais of paises" value="{{pais.idNomenclador}}">
+                        {{pais.descripcion}}
+                      </option>
+                    </app-select>
+                  </ng-template>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-md-10">
+                  <div *ngIf="!pnEdit.cubano; else
+                    pais_residencia ">
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'app.domain.persona.persona-natural.pais-reside' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="pais_reside"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                    <app-select label="{{'app.domain.persona.persona-natural.municipio' | translate }}:"
+                                name="idmunicipio"
+                                [(ngModel)]="pnEdit.idmunicipio">
+
+                      <option *ngFor="let municip of municipios" value="{{ municip.idNomenclador }}">{{
+                        municip.descripcion }}
+                      </option>
+                    </app-select>
+
+                  </div>
+                  <ng-template #pais_residencia>
+                    <app-select [(ngModel)]="pnEdit.idpaisresidencia" name="idpaisresidencia"
+                                label="{{ 'app.domain.persona.persona-natural.pais-reside' | translate }}: ">
+                      <option *ngFor="let pais of paises" value="{{pais.idNomenclador}}">
+                        {{pais.descripcion}}
+                      </option>
+                    </app-select>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+            <!--<br>-->
+            <!--<br>-->
+            <!--<br>-->
+
+            <div class="row">
+
+              <!--<div class="col-md-4">-->
+
+                <!--<div class="col-md-10">-->
+
+                  <!--<div *ngIf="!pnEdit.cubano; else-->
+                      <!--provincia_habilit">-->
+                    <!--<app-select label="{{'app.domain.persona.persona-natural.provincia' | translate }}: "-->
+                                <!--name="idprovincia"-->
+                                <!--(change)="cargarMunicipio($event)"-->
+                                <!--[(ngModel)]="pnEdit.idprovincia">-->
+
+
+                      <!--<option *ngFor="let provinc of provincias" value="{{ provinc.idNomenclador }}">{{-->
+                        <!--provinc.descripcion }}-->
+                      <!--</option>-->
+                    <!--</app-select>-->
+                  <!--</div>-->
+
+                  <!--<ng-template #provincia_habilit>-->
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'Provincia' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="provincia_habilit"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                  <!--</ng-template>-->
+
+                <!--</div>-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-4">-->
+                <!--<div class="col-md-10">-->
+                  <!--<div *ngIf="!pnEdit.cubano; else-->
+                  <!--municipio_habilit">-->
+                    <!--<app-select label="{{'app.domain.persona.persona-natural.municipio' | translate }}:"-->
+                                <!--name="idmunicipio"-->
+                                <!--[(ngModel)]="pnEdit.idmunicipio">-->
+
+                      <!--<option *ngFor="let municip of municipios" value="{{ municip.idNomenclador }}">{{-->
+                        <!--municip.descripcion }}-->
+                      <!--</option>-->
+                    <!--</app-select>-->
+                  <!--</div>-->
+
+                  <!--<ng-template #municipio_habilit>-->
+                    <!--<div class="form-group">-->
+                      <!--<label> {{ 'Municipio' | translate }}: </label>-->
+                      <!--<select [disabled]="true" name="municipio_habilit"-->
+                              <!--class="form-control form-control-sm">-->
+                        <!--<option value="" selected>&#45;&#45;Seleccione&#45;&#45;</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                  <!--</ng-template>-->
+
+                <!--</div>-->
+
+              <!--</div>-->
+
+              <div class="col-md-12">
+                <div class="col-md-12">
+                  <app-textarea
+                    name="direccion"
+                    label="{{'app.domain.persona.persona-natural.direccion'| translate}}: "
+                    [(ngModel)]="pnEdit.direccion"></app-textarea>
+                </div>
+
+              </div>
+
+              <!--<div class="col-md-1"></div>-->
+            </div>
+          </div>
+
+          <!--<pre>{{pnEdit|json}}</pre>-->
+          <!--<pre>{{generos|json}}</pre>-->
+
+          <div class="card-footer">
+            <div id="botones" class="pull-right">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="!formEditPersonaNatural.valid"><i
+                class="fa fa-dot-circle-o" [routerLink]="['/personanatural']"></i> {{ 'Guardar' | translate }}
+              </button>
+              <button *ngIf="!generico" type="reset" class="btn btn-sm btn-primary" [routerLink]="['/personanatural']">
+                <i class="fa fa-ban"></i> {{ 'Cerrar' |
+                translate }}
+              </button>
+
+              <!--<button *ngIf="generico" type="reset" class="btn btn-sm btn-primary"-->
+                      <!--[routerLink]="['/generico/personanatural']"><i class="fa fa-ban"></i> {{ 'Cerrar' | translate }}-->
+              <!--</button>-->
+
+                <button *ngIf="generico" type="reset" class="btn btn-sm btn-primary"
+                        [routerLink]="['/generico/personanatural/list', pnEdit.idpersonanatural]"><i
+                  class="fa fa-ban"></i> {{ 'Cerrar' |
+                  translate }}
+                </button>
+            </div>
+
+            <!--<pre>{{ pnEdit | json }}</pre>-->
+            <!--<pre>{{ estadosciviles | json }}</pre>-->
+
+            <!--<button type="submit" class="btn btn-sm btn-primary" [disabled]="!formAddPersonaNatural.valid"><i-->
+            <!--class="fa fa-dot-circle-o"></i> {{ 'app.base.btn.send' | translate }}-->
+            <!--</button>-->
+            <!--<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> {{ 'app.base.btn.reset' |-->
+            <!--translate }}-->
+            <!--</button>-->
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

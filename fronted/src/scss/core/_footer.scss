@@ -1,0 +1,25 @@
+.app-footer {
+  min-height: $footer-height;
+  padding: 0 $spacer;
+  line-height: $footer-height;
+  color: $footer-color;
+  background: $footer-bg;
+  @include borders($footer-borders);
+  position: relative;
+
+  .app-footer-img {
+    display: inline-block;
+    margin: 4px 5px 0 12px;
+    opacity: .5;
+  }
+
+  .app-footer-text {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: top;
+    color: #fff;
+    margin-top: 5px;
+    opacity: .6;
+    font-size: 12px;
+  }
+}

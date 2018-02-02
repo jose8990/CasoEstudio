@@ -1,0 +1,21 @@
+<tree-select name="multipleSelect"
+             [items]="items"
+             childrenField="children"
+             [multiple]="true"
+             [(ngModel)]="value"
+             required=true
+             minlength="2"
+             maxlength="4"
+             placeholder="Roles de seguridad"
+             [allowParentSelection]="AllowParentSelection"
+             #multipleSelect="ngModel"
+             [filterPlaceholder]="FilterPlaceholder"
+             [maxVisibleItemCount]="MaxDisplayed"
+             [allowFilter]="ShowFilter"
+             [disabled]="Disabled">
+</tree-select>
+<div *ngIf="multipleSelect.errors && (multipleSelect.dirty || multipleSelect.touched)" class="alert alert-danger">
+  <div [hidden]="!multipleSelect.errors.required">Multiple select is required</div>
+  <div [hidden]="!multipleSelect.errors.minlength">You must choose at least 2 items on Multiple select</div>
+  <div [hidden]="!multipleSelect.errors.maxlength">You must choose maximum 4 items on Multiple select</div>
+</div>

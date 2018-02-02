@@ -1,0 +1,8 @@
+<div [ngClass]="{'closed': !isOpen}" bsModal #appModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document" [ngStyle]="style">
+    <div class="modal-content">
+      <ng-content></ng-content>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

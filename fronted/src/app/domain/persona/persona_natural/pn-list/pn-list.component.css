@@ -1,0 +1,23 @@
+#navcontainer ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+
+#navcontainer ul li { display: inline; }
+
+
+#botones {
+  margin-right: 10px;
+}
+
+.boton_registrar{
+  margin-right: 20px;
+}
+
+.card-footer {
+  height: 50px;
+}
+
+

@@ -1,0 +1,33 @@
+<div class="form-group">
+  <label *ngIf="label"
+         [attr.for]="identifier"
+         class="form-control-label">
+    {{label}}
+  </label>
+
+  <select
+    [disabled]="disabled"
+    [(ngModel)]="value"
+    [ngClass]="{invalid: (invalid | async)}"
+    [id]="identifier"
+    [class.is-invalid]="init === false && (invalid | async)"
+    [class.is-valid]="(isvalid | async) && disabled === false"
+    (blur)="check()"
+    class="form-control form-control-sm"
+  >
+
+    <option value="" [selected]="true" selected>{{ 'component.select.placeholder' | translate }}</option>
+
+    <ng-content></ng-content>
+  </select>
+
+  <small *ngIf="help" [id]="identifier + 'HelpBlock'" class="form-text text-muted">
+    {{ help }}
+  </small>
+
+  <app-validation-messages
+    *ngIf="init === false && (invalid | async)"
+    [messages]="failures | async">
+  </app-validation-messages>
+
+</div>

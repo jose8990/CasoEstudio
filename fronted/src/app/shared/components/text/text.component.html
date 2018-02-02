@@ -1,0 +1,31 @@
+<div class="form-group">
+
+  <label *ngIf="label"
+         [attr.for]="identifier"
+         class="form-control-label">
+    {{ label }}
+  </label>
+
+  <input type="text"
+         style="background-color: white;border-color: white"
+         [disabled]="disabled"
+         [placeholder]="placeholder"
+         [(ngModel)]="value"
+         [ngClass]="{invalid: (invalid | async)}"
+         [id]="identifier"
+         [class.is-invalid]="init === false && (invalid | async)"
+         [class.is-valid]="(isvalid | async) && disabled === false"
+         (blur)="check()"
+         class="form-control form-control-sm"
+  />
+
+  <span *ngIf="help" [id]="identifier + 'HelpBlock'" class="help-block">
+    {{ help }}
+  </span>
+
+  <app-validation-messages
+    *ngIf="init === false && (invalid | async)"
+    [messages]="failures | async">
+  </app-validation-messages>
+
+</div>

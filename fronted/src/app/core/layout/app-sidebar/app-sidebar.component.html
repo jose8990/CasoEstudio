@@ -1,0 +1,108 @@
+<div class="sidebar">
+
+  <nav class="sidebar-nav"
+       *ngxPermissionsOnly="['ROLE_EXPEDIENTE', 'ROLE_PROMOVENTE', 'ROLE_PERSONA_NATURAL', 'ROLE_ASUNTO', 'ROLE_REPORTE', 'ROLE_NOMENCLADORES', 'ROLE_USER']">
+
+    <ul class="nav">
+
+      <!--<li class="divider"></li>-->
+
+      <li class="nav-title">
+        Men&uacute; de administraci&oacute;n
+      </li>
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown
+          *ngxPermissionsOnly="['ROLE_EXPEDIENTE', 'ROLE_PROMOVENTE', 'ROLE_ESCRITO', 'ROLE_ASUNTO', 'ROLE_REPORTE']">
+
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle>
+          <i class="icon-list"></i>
+          Atenci&oacute;n a la poblaci&oacute;n </a>
+
+        <ul class="nav-dropdown-items">
+
+          <li class="nav-item " *ngxPermissionsOnly="['ROLE_EXPEDIENTE']">
+            <a class="nav-link "  routerLinkActive="active" [routerLink]="['/expediente']"><i class="icon-puzzle"></i>
+              {{ 'app.domain.expediente.menu.title' | translate }}</a>
+          </li>
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_PROMOVENTE']">
+            <a class="nav-link "  routerLinkActive="active" [routerLink]="['/personanatural']"><i class="icon-puzzle"></i>
+              {{ 'app.domain.persona.persona-natural.menu.title' | translate }}</a>
+          </li>
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_ESCRITO']">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/escrito']"><i class="icon-puzzle"></i>
+              {{ 'app.domain.escrito.menu.title' | translate }}</a>
+          </li>
+
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_ASUNTO']">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/asuntos']"><i class="icon-puzzle"></i>
+              {{ 'app.domain.asunto.menu.title' | translate }}</a>
+          </li>
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_REPORTE']">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/reportes']"><i
+              class="icon-puzzle"></i>
+              {{ 'app.domain.reporte.menu.title' | translate }}</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown
+          *ngxPermissionsOnly="['ROLE_NOMENCLADORES', 'ROLE_USER']">
+
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i> Administraci&oacute;n</a>
+
+        <ul class="nav-dropdown-items">
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_NOMENCLADORES']">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/administracion/nomencladores']"><i
+              class="icon-puzzle"></i> Nomencladores</a>
+          </li>
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_USER']">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/administracion/usuarios']"><i
+              class="icon-puzzle"></i> Usuarios</a>
+          </li>
+
+          <li class="nav-item" *ngxPermissionsOnly="['ROLE_USER']">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/administracion/roles']"><i
+              class="icon-puzzle"></i> Roles</a>
+          </li>
+
+        </ul>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <nav class="sidebar-nav">
+
+    <ul class="nav">
+
+      <li class="nav-title">
+        Men&uacute; de usuario
+      </li>
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i> Mi Perfil</a>
+
+        <ul class="nav-dropdown-items">
+
+          <li class="nav-item">
+            <a class="nav-link"><i class="fa fa-user"></i> Ver perfil</a>
+            <a class="nav-link"><i class="fa fa-edit"></i> Editar</a>
+          </li>
+
+        </ul>
+      </li>
+
+    </ul>
+
+  </nav>
+
+</div>

@@ -1,0 +1,144 @@
+
+<form #formPersona="ngForm" class="form-horizontal" (ngSubmit)="addPersona()">
+
+  <div class="row" style="background-color: #00aced;">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <br>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                  <span style="text-align: center;">
+                    <H3 style="color: white; font-weight: bolder">CADASTE-SE</H3>
+                    <p style="color: white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                  </span>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <br>
+          </div>
+
+          <div id="textodiv" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <app-text
+              required="required"
+              name="numeroExpediente"
+              placeholder="nombre"
+              [(ngModel)]="persona.nombre">
+            </app-text>
+          </div>
+
+          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <app-text
+              required="required"
+              name="numeroExpediente"
+              placeholder="apellido"
+              [(ngModel)]="persona.apellido">
+            </app-text>
+          </div>
+
+          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <app-text
+              required="required"
+              name="numeroExpediente"
+              placeholder="participación"
+              [(ngModel)]="persona.participacion">
+            </app-text>
+          </div>
+
+          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <button style="border-color: white!important;" type="submit" class="btn btn-md btn-primary  float-left" [disabled]="!formPersona.valid">
+              Enviar
+            </button>
+          </div>
+
+          <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+            <br>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <br>
+          </div>
+
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color: white;">
+          <br>
+          <br>
+          <br>
+        </div>
+
+        <div class="row" style="background-color: white;">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                  <span style="text-align: center">
+                    <H3 style="font-weight: bolder">Dados</H3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                  </span>
+          </div>
+
+        </div>
+
+        <div class="row" style="background-color: white;">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <br>
+
+          </div>
+
+          <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+
+            <br>
+
+          </div>
+
+          <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <app-table [options]="options"
+                       [columns]="columns"
+                       [datasource]="datasource"
+                       [paging]="paging"
+                       [(idsRowSelected)]="idsRowSelected" >
+
+              <ng-template let-data>
+                <div class='text-center' *ngIf="data['column'].name === 'actions'">
+                  <button [routerLink]="['/escrito/edit', data['row'].idescrito]" type='button' class='btn btn-sm btn-info'><span
+                    class='fa fa-edit icon-sgquo'></span></button>
+                  <button [routerLink]="['/escrito/show', data['row'].idescrito]" type='button' class='btn btn-sm btn-info'><span
+                    class='fa fa-eye icon-sgquo'></span></button>
+
+                </div>
+              </ng-template>
+
+            </app-table>
+
+          </div>
+
+          <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+
+            <canvas mdbChart
+                    [chartType]="chartType"
+                    [data]="chartData"
+                    [labels]="label"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
+
+          </div>
+
+        </div>
+
+
+
+      </form>
+
+
+
+

@@ -1,0 +1,457 @@
+/* here you can put your own css to customize and override the theme */
+/***
+Page Header
+***/
+
+.header {
+  border-bottom: 1px solid #A50F05;
+  height: 60px;
+  background: white;
+  float: none;
+  height: auto;
+  min-height: auto;
+}
+
+.logo_and_grafica {
+  height: 60px;
+  display: inline;
+}
+
+.logo {
+  height: 59px;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(32%, #ffffff), color-stop(100%, #dedede));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 32%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede', GradientType=0);
+  float: left;
+}
+
+.img_logo {
+  margin: 8px 0 8px 1em;
+}
+
+.grafica {
+  height: 60px;
+  float: left;
+  background-image: url("../../uci/img/grafica2.jpg");
+  width: 328px;
+  height: 59px;
+}
+
+.header, .header * div {
+  display: block;
+}
+
+.portlet-title {
+  margin: 0 0px;
+  background: none repeat scroll 0 0 #ebebeb;
+  border-top: 1px solid #D2D2D2;
+  border-bottom: 1px solid #D2D2D2;
+  box-shadow: 0 2px 3px #D2D2D2;
+  font-family: "Arial";
+  height: 30px;
+  width: 100%;;
+  margin-top: 1px;
+}
+
+.portlet-title .caption {
+  color: #3D3D3D;
+}
+
+#working-area {
+  margin-bottom: 100px;
+}
+
+.portlet.box.red {
+  background-color: transparent;
+}
+
+.portlet.box.red > .portlet-title > .caption, .portlet.box.red > .portlet-title > .caption > i {
+  color: #3D3D3D;
+}
+
+.portlet.box.red > .portlet-title > .tools > a.expand {
+  background-image: url("../img/portlet-expand-icon.png");
+}
+
+.portlet.box.red > .portlet-title > .tools > a.collapse {
+  background-image: url("../img/portlet-collapse-icon.png");
+}
+
+.usuario {
+  background: #D6D6D6 none repeat scroll 0% 0%;
+  height: 60px;
+  float: right;
+  padding: 0px 12px 0px 0px;
+}
+
+.other-opt {
+  background: #FFF none repeat scroll 0px 0px;
+  float: left;
+  height: 60px;
+  padding: 0px 12px 0px 0px;
+}
+
+#help-opt, #user-opt {
+  margin-top: 1px;
+}
+
+.content_avatar {
+  padding: 3px;
+  background: #FFF none repeat scroll 0% 0%;
+  margin: 4px 6px;
+  border-radius: 4px;
+  float: left;
+}
+
+.avatar {
+  height: 46px;
+  width: 46px;
+  overflow: hidden;
+}
+
+.user-opt {
+  display: inline-block;
+  float: left;
+}
+
+/**, *::after, *::before {*/
+/*box-sizing: inherit;*/
+/*}*/
+
+/*.badge {*/
+/*box-sizing: border-box;*/
+/*}*/
+
+#help-opt, #user-opt {
+  margin-top: 12px;
+}
+
+/***
+Page Footer
+***/
+
+@media (min-width: 1200px) {
+  .footer00 {
+    width: 1140px;
+  }
+
+  .feedback-btn {
+    bottom: 33px;;
+    right: 110px;
+  }
+}
+
+.footer00 {
+  bottom: 0;
+  position: fixed;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#footer {
+  background: none repeat scroll 0 0 #A50F05;
+  bottom: 0;
+  display: block;
+  height: 35px;
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  right: 0;
+  width: auto;
+}
+
+.img_mini {
+  display: inline-block;
+  margin: 4px 5px 0 12px;
+  opacity: 0.5;
+}
+
+#footer p {
+  color: #FFFFFF;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.footer_text {
+  opacity: 0.6;
+}
+
+.page-footer {
+  padding: 0px;;
+}
+
+/* Configurando el panel */
+.portlet.box.xadi {
+  margin: 0 0px;
+  background: none repeat scroll 0 0 #ebebeb;
+  border: 1px solid #a50f05;
+  border-right: 1px solid #a50f05;
+  border-left: 1px solid #a50f05;
+  box-shadow: 0 2px 3px #D2D2D2;
+  font-family: "Arial";
+  height: 30px;
+  width: 100%;;
+  color: #3D3D3D;
+  padding: 5px 10px 9px;
+
+  border-width: 0px 1px 1px;
+  border-style: none solid solid;
+  border-color: -moz-use-text-color #A50F05 #A50F05;
+  -moz-border-top-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  border-image: none;
+}
+
+.control-label {
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+}
+
+/* Responsibe */
+
+@media (max-width: 320px) {
+  /*p {*/
+  /*color: yellow;;*/
+  /*}*/
+}
+
+/* Portlets */
+.portlet.box.red > .portlet-title, .portlet.red, .portlet > .portlet-body.red {
+  background-color: #a50f05;
+}
+
+.portlet.box.red {
+  border: 1px solid #D2D2D2;
+  border-top: 0;
+}
+
+/*Inputs*/
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+  outline: none;
+  border-color: #a50f05;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.form-control, output {
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #872319;
+  display: block;
+}
+
+/* Botones */
+.btn {
+  padding-top: 1.2px;
+  padding-bottom: 1.2px;
+}
+
+.btn.default:not(.btn-outline) {
+  color: #872319;
+}
+
+/* Menu */
+.nav-list > li > a, .dropdown-menu > li > a {
+  box-shadow: none;
+  /*border-width: 0px 0px 1px;*/
+  /*border-style: none none solid;*/
+  /*border-color: -moz-use-text-color -moz-use-text-color #D3D3D3;*/
+  margin: 0px;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-text {
+  color: #872319;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+  color: #872319;
+  /*border: 1px solid #a50f05;*/
+}
+
+.btn-group > .dropdown-menu::before, .dropdown-toggle > .dropdown-menu::before, .dropdown > .dropdown-menu::before {
+  left: auto;;
+}
+
+.menu {
+  /*margin: 0 0px ;*/
+  background: none repeat scroll 0 0 #ebebeb;
+  border-bottom: 1px solid #A50F05;
+  border-right: 1px solid #A50F05;
+  border-left: 1px solid #A50F05;
+  box-shadow: 0 2px 3px #D2D2D2;
+  font-family: "Arial";
+  /*height: 30px;*/
+  width: 100%;
+  /*margin-top: 1px;*/
+}
+
+#header_inbox_bar a {
+  height: auto;
+}
+
+#menup li > a {
+  /*padding: 5px 10px 9px 10px;;*/
+  /*height: 28px;*/
+}
+
+#menup li a:focus, #menup li a:hover {
+  background: #D6D6D6 none repeat scroll 0% 0%;
+}
+
+.dropdown-menu > li > a {
+  color: #872319;
+}
+
+#header_inbox_bar > .dropdown-menu {
+  left: auto;
+}
+
+#menu-user-idioma, #menu-user-ayuda, #menu-user-options {
+  top: auto;
+  left: auto;
+}
+
+#_permisos {
+  left: auto;
+}
+
+.dropdown-menu {
+  left: 0;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  background-color: #FFF;
+  color: #333;
+  z-index: 1000;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+  background: #D6D6D6 none repeat scroll 0% 0%;
+}
+
+.page-header.navbar .top-menu {
+  width: 100%;;
+}
+
+.navbar-collapse-menu {
+  padding-right: 0%;
+  padding-left: 0%;
+}
+
+.navbar-collapse {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle {
+  height: 28px;;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {
+  height: 28px;;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.menu-left .dropdown-menu:before {
+  /*right: 9px;*/
+  right: 129px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.menu-left .dropdown-menu:after {
+  /*right: 10px;*/
+  right: 130px;
+}
+
+#help-opt > li > a {
+  margin-right: 3px;
+}
+
+/* DataTables */
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #872319;
+}
+
+.pagination .active > a, .pagination .active > a:hover {
+  background: #eee;
+  border-color: #ddd;
+  color: #872319;
+}
+
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+  color: #ddd;
+  background-color: #fff;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: #872319;
+}
+
+table.dataTable.dtr-column > tbody > tr > td.control:before, table.dataTable.dtr-column > tbody > tr > th.control:before, table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
+  background-color: #872319;
+}
+
+table.dataTable.dtr-column > tbody > tr.parent td.control:before, table.dataTable.dtr-column > tbody > tr.parent th.control:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+  background-color: #872319;
+}
+
+/* Spiner */
+.block-spinner-bar > div, .page-spinner-bar > div {
+  background: #a50f05;
+}
+
+/* DatePicker */
+.datepicker .active {
+  background-color: #872319;
+  color: #fff;
+}
+
+.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
+  border: 1px solid #872319;
+}
+
+.datepicker table td {
+  color: #872319;
+}
+
+.datepicker table th {
+  color: #872319;
+}
+
+.datepicker table tr td.today, .datepicker table tr td.today:hover, .datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:hover {
+  color: #872319;
+  background-color: #ffdb99;
+  border-color: #872319;
+}
+
+body {
+  color: #872319;
+}
+
+/* Formularios */
+.form-control {
+  max-width: 35%;
+}
